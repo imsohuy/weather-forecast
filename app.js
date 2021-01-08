@@ -64,22 +64,22 @@ function displayWeather(){
 }
 
 // C to F conversion
-function celsiusToFahrenheit(temperature) {
+function celsiusToFahrenheit(temperature){
     return (temperature * 9/5) + 32;
 }
 
-// when the user clicks on the temperature element
-tempElement.addEventListener("click",function(){
-    if (weather.temperature.value == undefined) return;
+// when user click temperature element
+tempElement.addEventListener("click", function(){
+    if(weather.temperature.value === undefined) return;
     
-    if (weather.temperature.unit == "celsius"){
-        let fahrenheit =celsiusToFahrenheit(weather.temperature.value);
+    if(weather.temperature.unit == "celsius"){
+        let fahrenheit = celsiusToFahrenheit(weather.temperature.value);
         fahrenheit = Math.floor(fahrenheit);
-
-        tempElement.innerHTML = `${weather.temperature.value}°<span>F</span>`;
+        
+        tempElement.innerHTML = `${fahrenheit}°<span>F</span>`;
         weather.temperature.unit = "fahrenheit";
-    } else {
+    }else{
         tempElement.innerHTML = `${weather.temperature.value}°<span>C</span>`;
-        weather.temperature.unit = "celsius";
+        weather.temperature.unit = "celsius"
     }
-})
+});

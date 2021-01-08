@@ -2,10 +2,12 @@
     font-family: "Rimouski";
 }
 
-body{
+body,html{
     background-color: #293251;
+    margin:0px;
+    padding:0px;
+    height: 100%;
 }
-
 .container{
     width: 300px;    
     background-color: #FFF;
@@ -106,6 +108,4 @@ body{
     text-align: center;
     font-size: 0.8em;
 }
-
-
 
