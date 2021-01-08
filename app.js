@@ -3,6 +3,7 @@ const notificationElement = document.querySelector(".notification");
 const iconElement = document.querySelector(".weather-icon");
 const tempElement = document.querySelector(".temperature-value p");
 const descElement = document.querySelector(".temperature-description p");
+const feelsLikeElement = document.querySelector(".temperature-feels-like p");
 const locationElement = document.querySelector(".location p");
 
 // App data
@@ -44,11 +45,13 @@ function getWeather(latitude, longitude){
         return data;
     })
     .then(function (data){
+        // temperature return in kelvin => kelvinTemp - kelvin(273) = celciusTemp 
         weather.temperature.value=Math.floor(data.main.temp-KELVIN);
         weather.description = data.weather[0].description;
         weather.iconId = data.weather[0].icon;
         weather.city = data.name;
         weather.country = data.sys.country;
+        weather.feels_like = Math.floor(data.main.feels_like-KELVIN);
     })
     .then(function (){
         displayWeather();
@@ -61,6 +64,7 @@ function displayWeather(){
     tempElement.innerHTML =`${weather.temperature.value}°<span>C</span>`;
     descElement.innerHTML = weather.description;
     locationElement.innerHTML = `${weather.city},${weather.country}`;
+    feelsLikeElement.innerHTML = `Feels like ${weather.feels_like}°<span>C</span>`;
 }
 
 // C to F conversion
